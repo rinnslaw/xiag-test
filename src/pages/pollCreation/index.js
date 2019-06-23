@@ -40,7 +40,7 @@ class PollsCreation extends Component {
                     <PollCreationForm
                         currentPollId={this.props.currentPollId} 
                         question={this.props.polls[this.props.currentPollId].question}
-                        answers={ this.props.polls[this.props.currentPollId].answers.map(item => {
+                        answers={this.props.polls[this.props.currentPollId].answers.map(item => {
                             const answers = this.props.answers;
                             return answers[item]
                         })}

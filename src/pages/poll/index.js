@@ -24,19 +24,22 @@ class Polls extends Component {
         this.props.addNewUser(newValue);        
     }
 
+    
+
     render() {
+        
         return (
           <div>
           {(!!this.state.pollId && !!this.props.currentPoll) ? (
             <PollForm 
-              currentPollId = {this.state.pollId}
+              currentPollId = {this.state.pollId }
               users = {this.props.polls[this.state.pollId].users.map(item => {
                 return this.props.users[item]
-              }) }
+              })}
               question = {this.props.polls[this.state.pollId].question}
-              answers = { this.props.polls[this.state.pollId].answers.map(item => {
+              answers = {this.props.polls[this.state.pollId].answers.map(item => {
                 return this.props.answers[item]
-              }) }
+              })}
               addNewUser = {this.addNewUser}
               submitAnswer = {this.submitAnswer}
             />) : (
