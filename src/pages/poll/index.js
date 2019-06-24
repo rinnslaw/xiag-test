@@ -19,7 +19,7 @@ class Polls extends Component {
           <div>
           {(!!polls && this.state.pollId in polls && !!currentPoll ) ? (
             <PollForm 
-              currentPollId = {this.state.pollId }
+              currentPollId = {this.state.pollId}
               users = {polls[this.state.pollId].users.map(item => {
                         return users[item]
                       })}
