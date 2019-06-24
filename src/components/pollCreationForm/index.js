@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 const createHistory = require("history").createHashHistory;
 const history = createHistory()
-
+const uuidv1 = require('uuid/v1')
 
 class PollCreationForm extends React.Component {
     onAnswerChangeHandler = (e) => {
-        const answerId = e.target.dataset.id;
-        const newAnswer = e.target.value;
-        this.props.editAnswer(answerId, newAnswer);
+        const id = e.target.dataset.id;
+        const newValue = e.target.value;
+        this.props.editAnswer({
+            id, 
+            newValue
+        });
     }
 
     onQuestionChangeHandler = (e) => {
         const newQuestion = e.target.value;
         this.props.editQuestion(newQuestion);
+    }
+
+    onAddAnswerHandler = () => {
+        
+        const newAnswer = {
+            pollId: this.props.currentPollId,
+            answerId: uuidv1(), 
+            text:''
+        }
+        this.props.addAnswer(newAnswer);
     }
 
     render() {
@@ -51,7 +64,7 @@ class PollCreationForm extends React.Component {
                     <td className="poll-table__plus">
                         <button 
                             className="btn btn--plus"
-                            onClick={ this.props.addAnswer }>
+                            onClick={ this.onAddAnswerHandler }>
                             +
                         </button>
                     </td>

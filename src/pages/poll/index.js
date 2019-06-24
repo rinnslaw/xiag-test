@@ -13,35 +13,22 @@ class Polls extends Component {
       this.setState({pollId});
     }
 
-    submitAnswer = (data) => {
-        this.props.submitAnswer({
-            pollId: data.pollId, 
-            userId: data.userId
-        }) 
-    }
-
-    addNewUser = (newValue) => { 
-        this.props.addNewUser(newValue);        
-    }
-
-    
-
     render() {
-        
+        const { currentPoll, polls, answers, users, submitAnswer, addNewUser} = this.props
         return (
           <div>
-          {(!!this.state.pollId && !!this.props.currentPoll) ? (
+          {(this.state.pollId in polls && !!currentPoll) ? (
             <PollForm 
               currentPollId = {this.state.pollId }
-              users = {this.props.polls[this.state.pollId].users.map(item => {
-                return this.props.users[item]
-              })}
-              question = {this.props.polls[this.state.pollId].question}
-              answers = {this.props.polls[this.state.pollId].answers.map(item => {
-                return this.props.answers[item]
-              })}
-              addNewUser = {this.addNewUser}
-              submitAnswer = {this.submitAnswer}
+              users = {polls[this.state.pollId].users.map(item => {
+                        return users[item]
+                      })}
+              question = {polls[this.state.pollId].question}
+              answers = {polls[this.state.pollId].answers.map(item => {
+                          return answers[item]
+                        })}
+              addNewUser = {addNewUser}
+              submitAnswer = {submitAnswer}
             />) : (
               <div className="poll">
                 <h1 style={{textAlign:'center'}}>
