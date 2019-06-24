@@ -20,7 +20,6 @@ class PollsCreation extends Component {
                         currentPollId={currentPollId} 
                         question={polls[currentPollId].question}
                         answers={polls[currentPollId].answers.map(item => {
-                            
                             return answers[item]
                         })}
                         editAnswer={editAnswer}
