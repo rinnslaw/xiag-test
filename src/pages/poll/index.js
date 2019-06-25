@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  PollForm  from 'components/pollForm' 
-import { fetchDataFromServer, submitAnswer, addNewUser } from 'ducks/polls'
+import  PollForm  from 'components/pollForm';
+import { fetchDataFromServer, submitAnswer, addNewUser } from 'ducks/polls';
 
 class Polls extends Component {
     state = {
@@ -9,12 +9,12 @@ class Polls extends Component {
     }
 
     componentWillMount() {
-      const pollId = this.props.match.params.pallId;
+      const pollId = this.props.match.params.pollId;
       this.setState({pollId});
     }
 
     render() {
-        const { currentPoll, polls, answers, users, submitAnswer, addNewUser} = this.props
+        const { currentPoll, polls, answers, users, submitAnswer, addNewUser} = this.props;
         return (
           <div>
           {(!!polls && this.state.pollId in polls && !!currentPoll ) ? (

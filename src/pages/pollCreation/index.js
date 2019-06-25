@@ -1,10 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import  PollCreationForm  from 'components/pollCreationForm' 
-import { fetchDataFromServer, editAnswer, editQuestion, addAnswer } from 'ducks/polls'
-
-
+import  PollCreationForm  from 'components/pollCreationForm';
+import { fetchDataFromServer, editAnswer, editQuestion, addAnswer } from 'ducks/polls';
 
 class PollsCreation extends Component {
     componentWillMount() {
@@ -12,7 +9,7 @@ class PollsCreation extends Component {
     }
 
     render() {
-        const { currentPollId, polls, answers, editAnswer, editQuestion, addAnswer } = this.props
+        const { currentPollId, polls, answers, editAnswer, editQuestion, addAnswer } = this.props;
         return (
             <div>
                 {!!this.props.currentPollId &&
@@ -32,7 +29,7 @@ class PollsCreation extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     currentPollId: state.polls.currentPoll,
     polls: state.polls.polls,
@@ -42,10 +39,10 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDataFromServer: () => { dispatch(fetchDataFromServer()) },
-    editAnswer: (data) => { dispatch(editAnswer(data)) },
-    editQuestion: (data) => { dispatch(editQuestion(data)) },
-    addAnswer: (data) => { dispatch(addAnswer(data)) }
+    fetchDataFromServer: () => {dispatch(fetchDataFromServer())},
+    editAnswer: (data) => {dispatch(editAnswer(data))},
+    editQuestion: (data) => {dispatch(editQuestion(data))},
+    addAnswer: (data) => {dispatch(addAnswer(data))}
   };
 }
 

@@ -1,13 +1,9 @@
-import { createAction, createReducer } from 'redux-act'
+import { createAction, createReducer } from 'redux-act';
 import { normalize, schema } from 'normalizr';
 const uuidv1 = require('uuid/v1');
-
-
-const REDUCER = 'POLLS'
-const NS = `@@${REDUCER}/`
-
-
-const createPollsList = createAction(`${NS}_PALL_WAS_CREATED`);
+const REDUCER = 'POLLS';
+const NS = `@@${REDUCER}/`;
+const createPollsList = createAction(`${NS}_poll_WAS_CREATED`);
 export const editQuestion = createAction(`${NS}_QUESTION_WAS_EDITED`);
 export const editAnswer = createAction(`${NS}_ANSWER_WAS_EDITED`);
 export const addAnswer = createAction(`${NS}_ANSWER_WAS_ADDED`);
@@ -63,7 +59,7 @@ export const fetchDataFromServer = () => (dispatch, getState) => {
                 
             }
         ]
-    }
+    };
 
     const answer = new schema.Entity('answers');
     const user = new schema.Entity('users', {
